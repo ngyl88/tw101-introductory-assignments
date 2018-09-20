@@ -16,17 +16,14 @@ public class Diamond {
 
         String spacesString = null;
         String printedString = null;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n - 1; i++) {
 
             spacesString = getFormattedLine(" ", n - (i + 1));
             printedString = getFormattedLine("*", (i + 1) * 2 - 1);
 
             String formattedStringToPrint = spacesString + printedString;
             System.out.println(formattedStringToPrint);
-
-            if (i != n - 1) {
-                printedStack.push(formattedStringToPrint);
-            }
+            printedStack.push(formattedStringToPrint);
         }
         return printedStack;
     }
@@ -45,6 +42,8 @@ public class Diamond {
             int n = in.nextInt();
 
             ArrayDeque<String> stringPrinted = printUpperHalfAndReturnPrintedStack(n);
+
+            System.out.println(getFormattedLine("*", n * 2 - 1));
 
             popAndPrintLowerHalf(stringPrinted);
 
